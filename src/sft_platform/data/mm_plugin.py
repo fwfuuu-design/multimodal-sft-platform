@@ -29,7 +29,6 @@ from typing import TYPE_CHECKING, Any, BinaryIO, Literal, NotRequired, Optional,
 
 import numpy as np
 import torch
-import torchaudio
 from transformers.image_utils import get_image_size, is_valid_image, make_flat_list_of_images, to_numpy_array
 from transformers.models.mllama.processing_mllama import (
     convert_sparse_cross_attention_mask_to_dense,
@@ -312,6 +311,8 @@ class MMPluginMixin:
         self, audios: list["AudioInput"], sampling_rate: float, **kwargs
     ) -> "RegularizedAudioOutput":
         r"""Regularizes audios to avoid error. Including reading and resampling."""
+        import torchaudio
+
         results, sampling_rates = [], []
         for audio in audios:
             if not isinstance(audio, np.ndarray):
