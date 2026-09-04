@@ -1,0 +1,44 @@
+{
+  "text_lora": {
+    "stage": "sft",
+    "do_train": true,
+    "model_name_or_path": "fixtures/models/text-sft",
+    "dataset": "text_sft",
+    "template": "qwen",
+    "finetuning_type": "lora",
+    "output_dir": "fixtures/outputs/text-lora"
+  },
+  "text_qlora": {
+    "stage": "sft",
+    "do_train": true,
+    "model_name_or_path": "fixtures/models/text-sft",
+    "dataset": "text_sft",
+    "template": "qwen",
+    "finetuning_type": "lora",
+    "quantization_method": "bnb",
+    "quantization_bit": 4,
+    "double_quantization": true,
+    "output_dir": "fixtures/outputs/text-qlora"
+  },
+  "image_text_lora": {
+    "stage": "sft",
+    "do_train": true,
+    "model_name_or_path": "fixtures/models/image-text-sft",
+    "dataset": "image_text_sft",
+    "template": "qwen3_vl",
+    "finetuning_type": "lora",
+    "output_dir": "fixtures/outputs/image-text-lora"
+  },
+  "image_text_qlora": {
+    "stage": "sft",
+    "do_train": true,
+    "model_name_or_path": "fixtures/models/image-text-sft",
+    "dataset": "image_text_sft",
+    "template": "qwen3_vl",
+    "finetuning_type": "lora",
+    "quantization_method": "bnb",
+    "quantization_bit": 4,
+    "double_quantization": true,
+    "output_dir": "fixtures/outputs/image-text-qlora"
+  }
+}

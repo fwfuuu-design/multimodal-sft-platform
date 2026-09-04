@@ -1,0 +1,8 @@
+# Merge exactly one LoRA/QLoRA Adapter into an unquantized base model.
+model_name_or_path: /models/base-model
+adapter_name_or_path: /outputs/text-lora
+finetuning_type: lora
+template: default
+export_dir: /outputs/merged-model
+export_device: cpu
+export_size: 5

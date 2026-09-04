@@ -24,7 +24,7 @@ x-npu-common: &npu-common
   restart: unless-stopped
 
 services:
-  llamafactory-a2-ubuntu:
+  sft_platform-a2-ubuntu:
     <<: *npu-common
     profiles: ["a2-ubuntu"]
     build:
@@ -32,13 +32,13 @@ services:
       args:
         <<: *build-args
         BASE_IMAGE: quay.io/ascend/cann:9.1.0-910b-ubuntu22.04-py3.12
-    container_name: llamafactory-910b-ubuntu
-    image: llamafactory:npu-910b-ubuntu
+    container_name: sft_platform-910b-ubuntu
+    image: sft_platform:npu-910b-ubuntu
     ports:
       - "7860:7860"
       - "8000:8000"
 
-  llamafactory-a3-ubuntu:
+  sft_platform-a3-ubuntu:
     <<: *npu-common
     profiles: ["a3-ubuntu"]
     build:
@@ -46,13 +46,13 @@ services:
       args:
         <<: *build-args
         BASE_IMAGE: quay.io/ascend/cann:9.1.0-a3-ubuntu22.04-py3.12
-    container_name: llamafactory-a3-ubuntu
-    image: llamafactory:npu-a3-ubuntu
+    container_name: sft_platform-a3-ubuntu
+    image: sft_platform:npu-a3-ubuntu
     ports:
       - "7861:7860"
       - "8001:8000"
 
-  llamafactory-a2-openeuler:
+  sft_platform-a2-openeuler:
     <<: *npu-common
     profiles: ["a2-openeuler"]
     build:
@@ -60,13 +60,13 @@ services:
       args:
         <<: *build-args
         BASE_IMAGE: quay.io/ascend/cann:9.1.0-910b-openeuler24.03-py3.12
-    container_name: llamafactory-910b-openeuler
-    image: llamafactory:npu-910b-openeuler
+    container_name: sft_platform-910b-openeuler
+    image: sft_platform:npu-910b-openeuler
     ports:
       - "7862:7860"
       - "8002:8000"
 
-  llamafactory-a3-openeuler:
+  sft_platform-a3-openeuler:
     <<: *npu-common
     profiles: ["a3-openeuler"]
     build:
@@ -74,8 +74,8 @@ services:
       args:
         <<: *build-args
         BASE_IMAGE: quay.io/ascend/cann:9.1.0-a3-openeuler24.03-py3.12
-    container_name: llamafactory-a3-openeuler
-    image: llamafactory:npu-a3-openeuler
+    container_name: sft_platform-a3-openeuler
+    image: sft_platform:npu-a3-openeuler
     ports:
       - "7863:7860"
       - "8003:8000"

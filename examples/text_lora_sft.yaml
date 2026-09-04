@@ -1,0 +1,14 @@
+# Text SFT with LoRA. Replace controlled paths before submitting through the authenticated API.
+model_name_or_path: /models/base-model
+stage: sft
+finetuning_type: lora
+do_train: true
+dataset: alpaca_zh_demo
+dataset_dir: data
+template: default
+cutoff_len: 2048
+lora_rank: 8
+lora_target: all
+output_dir: /outputs/text-lora
+bf16: true
+report_to: none

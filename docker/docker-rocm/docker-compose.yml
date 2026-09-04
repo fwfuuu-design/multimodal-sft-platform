@@ -1,11 +1,11 @@
 services:
-  llamafactory:
+  sft_platform:
     build:
       dockerfile: ./docker/docker-rocm/Dockerfile
       context: ../..
       args:
         PIP_INDEX: https://pypi.org/simple
-    container_name: llamafactory
+    container_name: sft_platform
     ports:
       - "7860:7860"
       - "8000:8000"

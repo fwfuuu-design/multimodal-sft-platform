@@ -11,7 +11,6 @@ ARG PYTORCH_INDEX=https://download.pytorch.org/whl/cpu
 # Define environments
 ENV MAX_JOBS=16
 ENV FLASH_ATTENTION_FORCE_BUILD=TRUE
-ENV VLLM_WORKER_MULTIPROC_METHOD=spawn
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_OPTIONS=""
 ENV PIP_ROOT_USER_ACTION=ignore
@@ -37,14 +36,13 @@ RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh
 RUN pip uninstall -y torch torchvision torchaudio
 RUN pip install --no-cache-dir -r requirements/npu.txt --index-url "${PYTORCH_INDEX}"
 RUN pip install --no-cache-dir -r requirements/triton_ascend.txt
-RUN pip install --no-cache-dir -r requirements/deepspeed.txt
 RUN pip install --no-cache-dir -e . --no-build-isolation && \
     pip install --no-cache-dir -r requirements/metrics.txt --no-build-isolation
 
 # Set up volumes
 # VOLUME [ "/root/.cache/huggingface", "/app/shared_data", "/app/output" ]
 
-# Expose port 7860 for LLaMA Board
+# Expose the product WebUI port
 ENV GRADIO_SERVER_PORT=7860
 EXPOSE 7860
 

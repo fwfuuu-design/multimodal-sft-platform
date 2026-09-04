@@ -11,18 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# Modified in 2026 for the Multimodal Fine-tuning Platform MVP.
 
 import pytest
 
-from llamafactory.data import Role
-from llamafactory.data.converter import get_dataset_converter
-from llamafactory.data.parser import DatasetAttr
-from llamafactory.hparams import DataArguments
+from sft_platform.data import Role
+from sft_platform.data.converter import get_dataset_converter
+from sft_platform.data.parser import DatasetAttr
+from sft_platform.hparams import DataArguments
 
 
 @pytest.mark.runs_on(["cpu", "mps"])
 def test_alpaca_converter():
-    dataset_attr = DatasetAttr("hf_hub", "llamafactory/tiny-supervised-dataset")
+    dataset_attr = DatasetAttr("hf_hub", "sft_platform/tiny-supervised-dataset")
     data_args = DataArguments()
     example = {
         "instruction": "Solve the math problem.",
@@ -43,7 +45,7 @@ def test_alpaca_converter():
 
 @pytest.mark.runs_on(["cpu", "mps"])
 def test_sharegpt_converter():
-    dataset_attr = DatasetAttr("hf_hub", "llamafactory/tiny-supervised-dataset")
+    dataset_attr = DatasetAttr("hf_hub", "sft_platform/tiny-supervised-dataset")
     data_args = DataArguments()
     example = {
         "conversations": [

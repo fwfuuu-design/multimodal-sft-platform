@@ -1,0 +1,16 @@
+# Image-text SFT with 4-bit QLoRA. Replace controlled paths before API submission.
+model_name_or_path: /models/image-text-base
+stage: sft
+finetuning_type: lora
+do_train: true
+dataset: mllm_demo
+dataset_dir: data
+template: default
+cutoff_len: 2048
+quantization_bit: 4
+quantization_method: bnb
+lora_rank: 8
+lora_target: all
+output_dir: /outputs/image-qlora
+bf16: true
+report_to: none

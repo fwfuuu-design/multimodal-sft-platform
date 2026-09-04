@@ -4,7 +4,6 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
 
 # Define environments
 ENV MAX_JOBS=16
-ENV VLLM_WORKER_MULTIPROC_METHOD=spawn
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_OPTIONS=""
 ENV PIP_ROOT_USER_ACTION=ignore

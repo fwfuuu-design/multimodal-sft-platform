@@ -1,0 +1,10 @@
+Multimodal SFT Platform
+Copyright 2026
+
+This project incorporates and modifies code from LlamaFactory:
+https://github.com/hiyouga/LlamaFactory
+
+The incorporated code is licensed under the Apache License 2.0. Original
+copyright notices and source-level attributions are retained in the relevant
+files. Third-party model, framework, and kernel names remain the property of
+their respective owners.

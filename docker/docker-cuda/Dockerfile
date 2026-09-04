@@ -1,5 +1,5 @@
-# https://hub.docker.com/r/hiyouga/pytorch/tags
-ARG BASE_IMAGE=hiyouga/pytorch:th2.6.0-cu124-flashattn2.7.4-cxx11abi0-devel
+# https://hub.docker.com/r/pytorch/pytorch/tags
+ARG BASE_IMAGE=pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
 FROM ${BASE_IMAGE}
 
 # Installation arguments
@@ -10,7 +10,6 @@ ARG HTTP_PROXY=""
 # Define environments
 ENV MAX_JOBS=16
 ENV FLASH_ATTENTION_FORCE_BUILD=TRUE
-ENV VLLM_WORKER_MULTIPROC_METHOD=spawn
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_OPTIONS=""
 ENV PIP_ROOT_USER_ACTION=ignore
@@ -31,9 +30,9 @@ RUN pip config set global.index-url "${PIP_INDEX}" && \
 # Copy the application into the image
 COPY . /app
 
-# Install LLaMA Factory
+# Install Multimodal SFT Platform
 RUN pip install --no-cache-dir --no-build-isolation -e . && \
-    pip install --no-cache-dir --no-build-isolation -r requirements/metrics.txt -r requirements/deepspeed.txt
+    pip install --no-cache-dir --no-build-isolation -r requirements/metrics.txt -r requirements/bitsandbytes.txt
 
 # Rebuild flash attention
 RUN if [ "${INSTALL_FLASHATTN}" == "true" ]; then \
@@ -45,7 +44,7 @@ RUN if [ "${INSTALL_FLASHATTN}" == "true" ]; then \
 # Set up volumes
 # VOLUME [ "/root/.cache/huggingface", "/app/shared_data", "/app/output" ]
 
-# Expose port 7860 for LLaMA Board
+# Expose the product WebUI port
 ENV GRADIO_SERVER_PORT=7860
 EXPOSE 7860
 

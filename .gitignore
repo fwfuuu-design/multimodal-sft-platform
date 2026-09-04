@@ -181,3 +181,15 @@ wandb/
 swanlog/
 generated_predictions.jsonl
 predictions_score.json
+
+# Local environment and runtime state
+.env.*
+!.env.example
+platform_cache/
+offload/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+*.sqlite3
+*.sqlite3-journal
