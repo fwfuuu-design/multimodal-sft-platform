@@ -128,11 +128,13 @@ def test_second_pruning_batch_removed_alternate_frameworks_and_upstream_product_
 
     assert (REPOSITORY_ROOT / "src/sft_platform/model/kernels/interface.py").is_file()
     pyproject = (REPOSITORY_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    dependency_checks = (REPOSITORY_ROOT / "src/sft_platform/extras/misc.py").read_text(encoding="utf-8")
     assert 'name = "multimodal-sft-platform"' in pyproject
     assert "sft_platform-cli" not in pyproject
     assert 'lmf = ' not in pyproject
     for excluded_dependency in ("trl", "torchaudio", "torchdata", "sse-starlette", "tyro"):
         assert f'"{excluded_dependency}' not in pyproject
+        assert f'check_version("{excluded_dependency}' not in dependency_checks
 
     upstream_brand = re.compile(r"llama[ -]?" + r"factory|llama" + r"factory", re.IGNORECASE)
     for root in ("README.md", "README_zh.md", "examples", "data", "docker"):
