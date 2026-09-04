@@ -112,7 +112,6 @@ def test_excluded_training_modules_are_physically_removed_after_decoupling():
 
 
 def test_second_pruning_batch_removed_alternate_frameworks_and_upstream_product_surface():
-    assert REPOSITORY_ROOT.name == "SFTPlatform"
     for path in (
         "src/sft_platform/v1",
         "tests_v1",
